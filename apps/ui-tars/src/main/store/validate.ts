@@ -23,7 +23,9 @@ export const PresetSchema = z.object({
 
   // Chat Settings
   operator: z.nativeEnum(Operator),
-  language: z.enum(['zh', 'en']).optional(),
+  // We currently support only Ukrainian in the UI, but keep this as a string enum
+  // so presets can still validate correctly.
+  language: z.enum(['uk']).optional(),
   screenshotScale: z.number().min(0.1).max(1).optional(),
   maxLoopCount: z.number().min(25).max(200).optional(),
   loopIntervalInMs: z.number().min(0).max(3000).optional(),

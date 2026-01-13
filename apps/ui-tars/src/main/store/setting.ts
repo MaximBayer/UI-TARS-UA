@@ -18,7 +18,8 @@ import { validatePreset } from './validate';
 import { BrowserWindow } from 'electron';
 
 export const DEFAULT_SETTING: LocalStore = {
-  language: 'en',
+  // Use Ukrainian as the single default language
+  language: 'uk',
   vlmProvider: (env.vlmProvider as VLMProviderV2) || '',
   vlmBaseUrl: env.vlmBaseUrl || '',
   vlmApiKey: env.vlmApiKey || '',

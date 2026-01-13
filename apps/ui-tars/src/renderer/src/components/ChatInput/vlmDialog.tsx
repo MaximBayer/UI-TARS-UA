@@ -24,18 +24,18 @@ export function VLMDialog({ open, onOpenChange }: VLMDialogProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>VLM Configuration Required</DialogTitle>
+          <DialogTitle>Потрібна конфігурація VLM</DialogTitle>
           <DialogDescription className="text-foreground">
-            Missing VLM configuration. Operator requires these settings to run.
-            Would you like to configure VLM parameters?
+            Відсутня конфігурація VLM. Оператору потрібні ці налаштування для
+            роботи. Бажаєте налаштувати параметри VLM?
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="outline">Cancel</Button>
+            <Button variant="outline">Скасувати</Button>
           </DialogClose>
           <Button type="button" onClick={handleConfigureClick}>
-            Confirm
+            Підтвердити
           </Button>
         </DialogFooter>
       </DialogContent>

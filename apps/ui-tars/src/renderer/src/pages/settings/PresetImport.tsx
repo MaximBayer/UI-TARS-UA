@@ -45,12 +45,12 @@ export function PresetImport({ isOpen, onClose }: PresetImportProps) {
       });
 
       await importPresetFromText(yamlText);
-      toast.success('Preset imported successfully');
+      toast.success('Пресет успішно імпортовано');
       onClose();
     } catch (error) {
-      toast.error('Failed to import preset', {
+      toast.error('Не вдалося імпортувати пресет', {
         description:
-          error instanceof Error ? error.message : 'Unknown error occurred',
+          error instanceof Error ? error.message : 'Виникла невідома помилка',
       });
     }
   };
@@ -58,12 +58,12 @@ export function PresetImport({ isOpen, onClose }: PresetImportProps) {
   const handleRemoteImport = async () => {
     try {
       await importPresetFromUrl(remoteUrl, autoUpdate);
-      toast.success('Preset imported successfully');
+      toast.success('Пресет успішно імпортовано');
       onClose();
     } catch (error) {
-      toast.error('Failed to import preset', {
+      toast.error('Не вдалося імпортувати пресет', {
         description:
-          error instanceof Error ? error.message : 'Unknown error occurred',
+          error instanceof Error ? error.message : 'Виникла невідома помилка',
       });
     }
   };
@@ -72,22 +72,22 @@ export function PresetImport({ isOpen, onClose }: PresetImportProps) {
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="max-w-[400px]">
         <DialogHeader>
-          <DialogTitle>Import Preset</DialogTitle>
+          <DialogTitle>Імпорт пресета</DialogTitle>
           <DialogDescription>
-            Import the preset model configuration file.
+            Імпортуйте файл конфігурації пресета моделі.
           </DialogDescription>
         </DialogHeader>
 
         <Tabs defaultValue="local" className="w-full mb-6">
           <TabsList className="grid w-full grid-cols-2 mb-2">
-            <TabsTrigger value="local">Local File</TabsTrigger>
-            <TabsTrigger value="remote">Remote URL</TabsTrigger>
+            <TabsTrigger value="local">Локальний файл</TabsTrigger>
+            <TabsTrigger value="remote">Віддалений URL</TabsTrigger>
           </TabsList>
 
           <TabsContent value="local" className="space-y-4">
             <div className="flex flex-col items-center gap-4">
               <DialogDescription>
-                Select a YAML file to import settings preset
+                Виберіть YAML файл для імпорту пресета налаштувань
               </DialogDescription>
               <input
                 type="file"
@@ -100,7 +100,7 @@ export function PresetImport({ isOpen, onClose }: PresetImportProps) {
                 variant="outline"
                 onClick={() => fileInputRef.current?.click()}
               >
-                Choose File
+                Вибрати файл
               </Button>
             </div>
           </TabsContent>
@@ -108,7 +108,7 @@ export function PresetImport({ isOpen, onClose }: PresetImportProps) {
           <TabsContent value="remote" className="space-y-4">
             <div className="grid gap-4">
               <div className="space-y-2">
-                <Label htmlFor="preset-url">Preset URL</Label>
+                <Label htmlFor="preset-url">URL пресета</Label>
                 <Input
                   id="preset-url"
                   value={remoteUrl}
@@ -117,7 +117,7 @@ export function PresetImport({ isOpen, onClose }: PresetImportProps) {
                 />
               </div>
               <div className="flex items-center space-x-2">
-                <Label htmlFor="auto-update">Auto update on startup</Label>
+                <Label htmlFor="auto-update">Автооновлення при запуску</Label>
                 <Switch
                   id="auto-update"
                   checked={autoUpdate}
@@ -130,10 +130,10 @@ export function PresetImport({ isOpen, onClose }: PresetImportProps) {
 
         <DialogFooter className="flex flex-row items-center justify-end gap-2">
           <Button variant="outline" onClick={onClose}>
-            Cancel
+            Скасувати
           </Button>
           <Button onClick={handleRemoteImport} disabled={!remoteUrl}>
-            Import
+            Імпортувати
           </Button>
         </DialogFooter>
       </DialogContent>

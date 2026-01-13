@@ -41,27 +41,30 @@ export const FreeTrialDialog = memo(
       <AlertDialog open={open} onOpenChange={onOpenChange}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Free Trial Service Agreement</AlertDialogTitle>
+            <AlertDialogTitle>
+              Угода про безкоштовну пробну версію
+            </AlertDialogTitle>
             <AlertDialogDescription className="hidden" />
             <div className="text-muted-foreground text-sm">
               <p>
-                As part of our research, we offer a 30-minute free trial of our
-                cloud service powered by Volcano Engine, where you can
-                experience UI-TARS with remote computer and browser operations
-                without purchasing model service and computing resources.
+                У рамках нашого дослідження ми пропонуємо 30-хвилинну
+                безкоштовну пробну версію нашого хмарного сервісу на базі
+                Volcano Engine, де ви можете випробувати UI-TARS з віддаленими
+                операціями комп&apos;ютера та браузера без купівлі модельного
+                сервісу та обчислювальних ресурсів.
               </p>
               <p className="my-4">
                 <b>
-                  By agreeing to use this service, your data will be transmitted
-                  to the servers. Please note that.
+                  Погоджуючись використовувати цей сервіс, ваші дані будуть
+                  передані на сервери. Зверніть увагу на це.
                 </b>{' '}
-                In compliance with relevant regulations, you should avoid
-                entering any sensitive personal information. All records on the
-                servers will be exclusively used for academic research purposes
-                and will not be utilized for any other activities.
+                Відповідно до відповідних нормативних актів, вам слід уникати
+                введення будь-якої конфіденційної особистої інформації. Усі
+                записи на серверах використовуватимуться виключно для наукових
+                досліджень і не використовуватимуться для інших цілей.
               </p>
               <p className="my-4">
-                Thank you for your support of the UI-TARS research project!
+                Дякуємо за вашу підтримку дослідницького проекту UI-TARS!
               </p>
               <div className="flex items-center gap-2 mb-4 text-foreground">
                 <Checkbox
@@ -69,13 +72,13 @@ export const FreeTrialDialog = memo(
                   checked={dontShowAgain}
                   onCheckedChange={onCheck}
                 />
-                <Label htmlFor="free">I agree. Don't show this again</Label>
+                <Label htmlFor="free">Я погоджуюсь. Більше не показувати</Label>
               </div>
             </div>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={onClick}>Agree</AlertDialogAction>
+            <AlertDialogCancel>Скасувати</AlertDialogCancel>
+            <AlertDialogAction onClick={onClick}>Погодитись</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

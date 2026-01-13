@@ -26,7 +26,7 @@ export function PresetBanner(props: PresetBannerProps) {
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <span className="font-medium text-gray-700">
-            Remote Preset Management
+            Керування віддаленими пресетами
           </span>
           <TooltipProvider>
             <CNTooltip>
@@ -34,7 +34,7 @@ export function PresetBanner(props: PresetBannerProps) {
                 <Info className="w-4 h-4 text-gray-400 hover:text-gray-500" />
               </TooltipTrigger>
               <TooltipContent>
-                When using remote preset, settings will be read-only
+                При використанні віддаленого пресета налаштування будуть тільки для читання
               </TooltipContent>
             </CNTooltip>
           </TooltipProvider>
@@ -44,7 +44,7 @@ export function PresetBanner(props: PresetBannerProps) {
           <p className="text-sm text-gray-600 line-clamp-2">{props.url}</p>
           {props.date && (
             <p className="text-xs text-gray-500 mt-1">
-              {`Last updated: ${new Date(props.date).toLocaleString()}`}
+              {`Оновлено: ${new Date(props.date).toLocaleString()}`}
             </p>
           )}
         </div>
@@ -55,7 +55,7 @@ export function PresetBanner(props: PresetBannerProps) {
           className="mb-0"
           onClick={props.handleUpdatePreset}
         >
-          Update Preset
+          Оновити пресет
         </Button>
 
         <Button
@@ -64,7 +64,7 @@ export function PresetBanner(props: PresetBannerProps) {
           className="text-red-400 border-red-400 hover:bg-red-50 hover:text-red-500 ml-4 mb-0"
           onClick={props.handleResetPreset}
         >
-          Reset to Manual
+          Скинути до ручного
         </Button>
       </div>
     </Card>

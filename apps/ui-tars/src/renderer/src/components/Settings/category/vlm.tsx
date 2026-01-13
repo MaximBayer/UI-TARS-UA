@@ -274,7 +274,7 @@ export function VLMSettings({
         <form className={cn('space-y-8 px-[1px]', className)}>
           {!isRemoteAutoUpdatedPreset && (
             <Button type="button" variant="outline" onClick={handlePresetModal}>
-              Import Preset Config
+              Імпортувати налаштування
             </Button>
           )}
           {isRemoteAutoUpdatedPreset && (
@@ -293,14 +293,14 @@ export function VLMSettings({
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel>VLM Provider</FormLabel>
+                  <FormLabel>Провайдер VLM</FormLabel>
                   <Select
                     disabled={isRemoteAutoUpdatedPreset}
                     onValueChange={field.onChange}
                     value={field.value}
                   >
                     <SelectTrigger className="w-full bg-white">
-                      <SelectValue placeholder="Select VLM provider" />
+                      <SelectValue placeholder="Оберіть провайдера VLM" />
                     </SelectTrigger>
                     <SelectContent>
                       {Object.values(VLMProviderV2).map((provider) => (
@@ -321,11 +321,11 @@ export function VLMSettings({
             name="vlmBaseUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>VLM Base URL</FormLabel>
+                <FormLabel>Базовий URL VLM</FormLabel>
                 <FormControl>
                   <Input
                     className="bg-white"
-                    placeholder="Enter VLM Base URL"
+                    placeholder="Введіть базовий URL VLM"
                     {...field}
                     disabled={isRemoteAutoUpdatedPreset}
                   />
@@ -340,13 +340,13 @@ export function VLMSettings({
             name="vlmApiKey"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>VLM API Key</FormLabel>
+                <FormLabel>API-ключ VLM</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <Input
                       type={showPassword ? 'text' : 'password'}
                       className="bg-white"
-                      placeholder="Enter VLM API_Key"
+                      placeholder="Введіть API-ключ VLM"
                       {...field}
                       disabled={isRemoteAutoUpdatedPreset}
                     />
@@ -375,11 +375,11 @@ export function VLMSettings({
             name="vlmModelName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>VLM Model Name</FormLabel>
+                <FormLabel>Назва моделі VLM</FormLabel>
                 <FormControl>
                   <Input
                     className="bg-white"
-                    placeholder="Enter VLM Model Name"
+                    placeholder="Введіть назву моделі VLM"
                     {...field}
                     disabled={isRemoteAutoUpdatedPreset}
                   />
@@ -404,7 +404,7 @@ export function VLMSettings({
             name="useResponsesApi"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Use Responses API</FormLabel>
+                <FormLabel>Використовувати Responses API</FormLabel>
                 <FormControl>
                   <div className="flex items-center gap-3">
                     <Switch
@@ -415,13 +415,13 @@ export function VLMSettings({
                     />
                     {responseApiSupported === false && (
                       <p className="text-sm text-red-500">
-                        Response API is not supported by this model
+                        Response API не підтримується цією моделлю
                       </p>
                     )}
                     {isCheckingResponseApi && (
                       <p className="text-sm text-muted-foreground flex items-center">
                         <Loader2 className="mr-2 h-3 w-3 animate-spin" />
-                        Checking Response API support...
+                        Перевірка підтримки Response API...
                       </p>
                     )}
                   </div>
@@ -493,7 +493,7 @@ export function ModelAvailabilityCheck({
 
     if (!isConfigValid) {
       toast.error(
-        'Please fill in all required fields before checking model availability',
+        "Будь ласка, заповніть усі обов'язкові поля перед перевіркою доступності моделі",
       );
       return;
     }
@@ -509,10 +509,10 @@ export function ModelAvailabilityCheck({
       onResponseApiSupportChange?.(responseApiSupported);
 
       if (isAvailable) {
-        const successMessage = `Model "${modelName}" is available and working correctly${
+        const successMessage = `Модель "${modelName}" доступна і працює коректно${
           responseApiSupported
-            ? '. Response API is supported.'
-            : '. But Response API is not supported.'
+            ? '. Response API підтримується.'
+            : '. Але Response API не підтримується.'
         }`;
         setCheckState({
           status: 'success',
@@ -523,7 +523,7 @@ export function ModelAvailabilityCheck({
           responseApiSupported,
         });
       } else {
-        const errorMessage = `Model "${modelName}" is not responding correctly`;
+        const errorMessage = `Модель "${modelName}" не відповідає коректно`;
         setCheckState({
           status: 'error',
           message: errorMessage,
@@ -533,8 +533,8 @@ export function ModelAvailabilityCheck({
       }
     } catch (error) {
       const errorMessage =
-        error instanceof Error ? error.message : 'Unknown error occurred';
-      const fullErrorMessage = `Failed to connect to model: ${errorMessage}`;
+        error instanceof Error ? error.message : 'Сталася невідома помилка';
+      const fullErrorMessage = `Не вдалося підключитися до моделі: ${errorMessage}`;
 
       setCheckState({
         status: 'error',
@@ -564,10 +564,10 @@ export function ModelAvailabilityCheck({
         {checkState.status === 'checking' ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Checking Model...
+            Перевірка моделі...
           </>
         ) : (
-          'Check Model Availability'
+          'Перевірити доступність моделі'
         )}
       </Button>
 

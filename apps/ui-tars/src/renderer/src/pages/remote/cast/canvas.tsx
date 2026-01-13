@@ -29,7 +29,9 @@ export const CDPBrowser: React.FC<CDPBrowserProps> = ({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const pageRef = useRef<Page | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const clientRef = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const browserRef = useRef<any>(null);
   const [viewportSize, setViewportSize] = useState<{
     width: number;
@@ -37,7 +39,9 @@ export const CDPBrowser: React.FC<CDPBrowserProps> = ({
   } | null>(null);
   const [isFocused, setIsFocused] = useState(false);
 
-  const getModifiersForEvent = (event: any) =>
+  const getModifiersForEvent = (
+    event: MouseEvent | WheelEvent | KeyboardEvent,
+  ) =>
     (event.altKey ? 1 : 0) |
     (event.ctrlKey ? 2 : 0) |
     (event.metaKey ? 4 : 0) |
@@ -67,7 +71,12 @@ export const CDPBrowser: React.FC<CDPBrowserProps> = ({
         })
         .catch(console.error);
     } else if (event instanceof MouseEvent) {
-      const buttons = { 0: 'none', 1: 'left', 2: 'middle', 3: 'right' };
+      const buttons: Record<number, string> = {
+        0: 'none',
+        1: 'left',
+        2: 'middle',
+        3: 'right',
+      };
       const eventType = event.type;
       const mouseEventMap = {
         mousedown: 'mousePressed',
@@ -83,7 +92,7 @@ export const CDPBrowser: React.FC<CDPBrowserProps> = ({
           type,
           x,
           y,
-          button: (buttons as any)[event.which],
+          button: buttons[event.which] || 'none',
           modifiers: getModifiersForEvent(event),
           clickCount: 1,
         })
@@ -112,6 +121,7 @@ export const CDPBrowser: React.FC<CDPBrowserProps> = ({
           type,
           text,
           unmodifiedText: text ? text.toLowerCase() : undefined,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           keyIdentifier: (event as any).keyIdentifier,
           code: event.code,
           key: event.key,
@@ -188,7 +198,9 @@ export const CDPBrowser: React.FC<CDPBrowserProps> = ({
   }, [viewportSize?.width, throttledUpdateCanvasSize]);
 
   const initPuppeteer = async (endpoint: string) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let browser: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let client: any;
     try {
       browser = await connect({
@@ -300,12 +312,14 @@ export const CDPBrowser: React.FC<CDPBrowserProps> = ({
             }
           },
         );
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         client.on('error', (err: any) => {
           console.error('client.on', err);
         });
         client.on('disconnect', () => {});
       };
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const handleTarget = async (target: any) => {
         if (target.type() !== 'page') {
           return;

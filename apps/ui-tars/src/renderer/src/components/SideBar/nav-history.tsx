@@ -108,7 +108,7 @@ export function NavHistory({
                   onClick={handleHistory}
                 >
                   <History strokeWidth={2} />
-                  <span>History</span>
+                  <span>Історія</span>
                   <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                 </SidebarMenuButton>
               </CollapsibleTrigger>
@@ -130,7 +130,7 @@ export function NavHistory({
                         <DropdownMenuTrigger asChild>
                           <SidebarMenuAction className="invisible group-hover/item:visible [&[data-state=open]]:visible mt-1">
                             <MoreHorizontal />
-                            <span className="sr-only">More</span>
+                            <span className="sr-only">Більше</span>
                           </SidebarMenuAction>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent
@@ -144,7 +144,7 @@ export function NavHistory({
                             onClick={() => handleDelete(item.id)}
                           >
                             <Trash2 className="text-red-400" />
-                            <span>Delete</span>
+                            <span>Видалити</span>
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>

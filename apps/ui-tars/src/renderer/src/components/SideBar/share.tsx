@@ -63,8 +63,8 @@ export function ShareOptions({ sessionId }: { sessionId: string }) {
       shareTimeoutRef.current = setTimeout(() => {
         setIsSharing(false);
         isSharePending.current = false;
-        toast.error('Share timeout', {
-          description: 'Please try again later',
+        toast.error('Час очікування поділитися вичерпано', {
+          description: 'Будь ласка, спробуйте пізніше',
         });
       }, SHARE_TIMEOUT);
 
@@ -111,10 +111,10 @@ export function ShareOptions({ sessionId }: { sessionId: string }) {
             reportUrl = url;
             uploadSuccess = true;
             await navigator.clipboard.writeText(url);
-            toast.success('Report link copied to clipboard!');
+            toast.success('Посилання на звіт скопійовано в буфер обміну!');
           } catch (error) {
             console.error('Upload report failed:', error);
-            toast.error('Failed to upload report', {
+            toast.error('Не вдалося завантажити звіт', {
               description:
                 error instanceof Error ? error.message : JSON.stringify(error),
             });
@@ -150,7 +150,7 @@ export function ShareOptions({ sessionId }: { sessionId: string }) {
       }
     } catch (error) {
       console.error('Share failed:', error);
-      toast.error('Failed to generate share content', {
+      toast.error('Не вдалося створити вміст для поділу', {
         description:
           error instanceof Error ? error.message : JSON.stringify(error),
       });
@@ -188,7 +188,7 @@ export function ShareOptions({ sessionId }: { sessionId: string }) {
         ) : (
           <SquareArrowOutUpRight />
         )}
-        <span>Share</span>
+        <span>Поділитися</span>
       </DropdownMenuItem>
       <AlertDialog
         open={isShareConfirmOpen}
@@ -196,22 +196,22 @@ export function ShareOptions({ sessionId }: { sessionId: string }) {
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Share Report</AlertDialogTitle>
+            <AlertDialogTitle>Поділитися звітом</AlertDialogTitle>
             <AlertDialogDescription>
-              📢 Would you like to share your report to help us improve{' '}
-              <b>UI-TARS</b>? This includes your screen recordings and actions.
+              📢 Чи бажаєте ви поділитися звітом, щоб допомогти нам покращити{' '}
+              <b>UI-TARS</b>? Це включає записи екрану та дії.
               <br />
               <br />
-              💡 We encourage you to create a clean and privacy-free desktop
-              environment before each use.
+              💡 Ми рекомендуємо створити чисте та безпечне робоче середовище
+              перед кожним використанням.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel onClick={(e) => processShare(false, e)}>
-              No, just download
+              Ні, просто завантажити
             </AlertDialogCancel>
             <AlertDialogAction onClick={(e) => processShare(true, e)}>
-              Yes, continue!
+              Так, продовжити!
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

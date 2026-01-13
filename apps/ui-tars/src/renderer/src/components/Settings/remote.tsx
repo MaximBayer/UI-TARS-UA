@@ -134,10 +134,10 @@ export const RemoteSettingsDialog = ({
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="max-w-[480px] max-h-[80vh] flex flex-col">
         <DialogHeader>
-          <DialogTitle>{operator} Settings</DialogTitle>
+          <DialogTitle>Налаштування {operator}</DialogTitle>
           <DialogDescription>
-            If you need to use for a long - term and stable period, You can log
-            in to the Volcengine FaaS console to upgrade.
+            Якщо вам потрібно використовувати на тривалий та стабільний період,
+            ви можете увійти до консолі Volcengine FaaS для оновлення.
           </DialogDescription>
         </DialogHeader>
         <div
@@ -150,22 +150,22 @@ export const RemoteSettingsDialog = ({
             }`}
           />
           <Steps step={1} classname="mt-[-40px]">
-            Read Remote Document
+            Прочитайте віддалену документацію
           </Steps>
           <div className="ml-4 mb-6 bg-[#f6f9ffff] p-5 rounded-md">
             <Button className="w-full" variant={'outline'}>
-              View document guide
+              Переглянути документацію
               <SquareArrowOutUpRight />
             </Button>
           </div>
-          <Steps step={2}>Remote Settings</Steps>
+          <Steps step={2}>Віддалені налаштування</Steps>
           {operator === Operator.RemoteComputer && (
             <RemoteComputerSettings
               ref={remoteComputerRef}
               className="ml-4 mb-6 bg-[#f6f9ffff] p-5 rounded-md"
             />
           )}
-          <Steps step={3}>VLM Settings</Steps>
+          <Steps step={3}>Налаштування VLM</Steps>
           <VLMSettings
             ref={vlmSettingsRef}
             className="ml-4 bg-[#f6f9ffff] p-5 rounded-md"
@@ -177,7 +177,7 @@ export const RemoteSettingsDialog = ({
           />
         </div>
         <Button className="mt-8 mx-8" onClick={handleGetStart}>
-          Get Start
+          Почати
         </Button>
       </DialogContent>
     </Dialog>

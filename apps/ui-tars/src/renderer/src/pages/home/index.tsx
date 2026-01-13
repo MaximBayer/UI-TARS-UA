@@ -159,14 +159,14 @@ const Home = () => {
       <DragArea></DragArea>
       <div className="w-full h-full flex flex-col items-center justify-center">
         <h1 className="text-2xl font-semibold mt-1 mb-8">
-          Welcome to UI-TARS Desktop
+          Ласкаво просимо до UI-TARS Desktop
         </h1>
         <Alert className="mb-4 w-[824px]">
           <Info className="h-4 w-4 mt-2" />
           <AlertDescription>
             <div className="flex items-center">
               <p className="text-sm text-muted-foreground">
-                You can also experience the remote versions on Volcano
+                Ви також можете спробувати віддалені версії на Volcano
                 Engine:&nbsp;
               </p>
               <Button
@@ -179,9 +179,9 @@ const Home = () => {
                   )
                 }
               >
-                Computer Operator
+                Комп'ютерний оператор
               </Button>
-              <span>&nbsp;and&nbsp;</span>
+              <span>&nbsp;та&nbsp;</span>
               <Button
                 variant="link"
                 className="p-0 text-blue-500 hover:text-blue-600 hover:underline cursor-pointer"
@@ -192,7 +192,7 @@ const Home = () => {
                   )
                 }
               >
-                Browser Operator
+                Браузерний оператор
               </Button>
             </div>
           </AlertDescription>
@@ -200,10 +200,10 @@ const Home = () => {
         <div className="flex gap-6">
           <Card className="w-[400px] py-5">
             <CardHeader className="px-5">
-              <CardTitle>Computer Operator</CardTitle>
+              <CardTitle>Комп'ютерний оператор</CardTitle>
               <CardDescription>
-                Use the UI-TARS model to automate and complete tasks directly on
-                your computer with AI assistance.
+                Використовуйте модель UI-TARS для автоматизації та виконання
+                завдань безпосередньо на вашому комп'ютері за допомогою AI.
               </CardDescription>
             </CardHeader>
             <CardContent className="px-5">
@@ -218,16 +218,16 @@ const Home = () => {
                 onClick={() => handleLocalPress(Operator.LocalComputer)}
                 className="w-full"
               >
-                Use Local Computer
+                Використати локальний комп'ютер
               </Button>
             </CardFooter>
           </Card>
           <Card className="w-[400px] py-5">
             <CardHeader className="px-5">
-              <CardTitle>Browser Operator</CardTitle>
+              <CardTitle>Браузерний оператор</CardTitle>
               <CardDescription>
-                Let the UI-TARS model help you automate browser tasks, from
-                navigating pages to filling out forms.
+                Дозвольте моделі UI-TARS допомогти вам автоматизувати завдання в
+                браузері, від навігації до заповнення форм.
               </CardDescription>
             </CardHeader>
             <CardContent className="px-5">
@@ -242,7 +242,7 @@ const Home = () => {
                 onClick={() => handleLocalPress(Operator.LocalBrowser)}
                 className="w-full"
               >
-                Use Local Browser
+                Використати локальний браузер
               </Button>
             </CardFooter>
           </Card>

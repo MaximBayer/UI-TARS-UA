@@ -40,22 +40,22 @@ export const NavDialog = memo(
     return (
       <AlertDialog open={open} onOpenChange={onOpenChange}>
         <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Navigation Alert</AlertDialogTitle>
-            <AlertDialogDescription>
-              The current instance is running. Navigating away will forcibly
-              stop the instance. Do you still want to proceed?
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction
-              className="bg-red-500 hover:bg-red-600"
-              onClick={onConfirm}
-            >
-              Confirm
-            </AlertDialogAction>
-          </AlertDialogFooter>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Попередження про навігацію</AlertDialogTitle>
+          <AlertDialogDescription>
+            Поточний екземпляр виконується. Перехід примусово зупинить
+            екземпляр. Все одно продовжити?
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Скасувати</AlertDialogCancel>
+          <AlertDialogAction
+            className="bg-red-500 hover:bg-red-600"
+            onClick={onConfirm}
+          >
+            Підтвердити
+          </AlertDialogAction>
+        </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
     );

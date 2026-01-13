@@ -25,24 +25,24 @@ export const TerminateDialog = memo(
     return (
       <AlertDialog open={open} onOpenChange={onOpenChange}>
         <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>
-              Terminate the current instance ?
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              After termination, the current remote instance will be reclaimed,
-              and the task will be paused
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction
-              className="bg-red-500 hover:bg-red-600"
-              onClick={onConfirm}
-            >
-              Terminate
-            </AlertDialogAction>
-          </AlertDialogFooter>
+        <AlertDialogHeader>
+          <AlertDialogTitle>
+            Завершити поточний екземпляр?
+          </AlertDialogTitle>
+          <AlertDialogDescription>
+            Після завершення поточний віддалений екземпляр буде повернуто,
+            а завдання буде призупинено
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Скасувати</AlertDialogCancel>
+          <AlertDialogAction
+            className="bg-red-500 hover:bg-red-600"
+            onClick={onConfirm}
+          >
+            Завершити
+          </AlertDialogAction>
+        </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
     );

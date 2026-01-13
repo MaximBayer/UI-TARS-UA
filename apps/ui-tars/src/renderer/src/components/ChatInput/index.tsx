@@ -108,7 +108,7 @@ const ChatInput = ({
 
     console.log('startRun', instructions, restUserData);
 
-    let history = chatMessages;
+    const history = chatMessages;
 
     const session = await getSession(sessionId);
     await updateSession(sessionId, {
@@ -188,8 +188,8 @@ const ChatInput = ({
             </TooltipTrigger>
             <TooltipContent>
               <p className="whitespace-pre-line">
-                send last instructions when you done for ui-tars&apos;s
-                &apos;CALL_USER&apos;
+                Надіслати останні інструкції після виконання
+                &apos;CALL_USER&apos; від ui-tars
               </p>
             </TooltipContent>
           </Tooltip>
@@ -221,7 +221,7 @@ const ChatInput = ({
                 ? `${savedInstructions}`
                 : running && lastHumanMessage && messages?.length > 1
                   ? lastHumanMessage
-                  : 'What can I do for you today?'
+                  : 'Що я можу зробити для вас сьогодні?'
             }
             className="min-h-[120px] rounded-2xl resize-none px-4 pb-16" // 调整内边距
             value={localInstructions}

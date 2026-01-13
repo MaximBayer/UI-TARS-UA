@@ -51,15 +51,15 @@ export const LocalSettingsDialog = ({
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="max-w-[480]">
         <DialogHeader>
-          <DialogTitle>VLM Settings</DialogTitle>
+          <DialogTitle>Налаштування VLM</DialogTitle>
           <DialogDescription>
-            Enter VLM settings to enable the model to control the local computer
-            or browser.
+            Введіть налаштування VLM, щоб модель могла керувати локальним
+            комп&apos;ютером або браузером.
           </DialogDescription>
         </DialogHeader>
         <VLMSettings ref={vlmSettingsRef} />
         <Button className="mt-8 mx-8" onClick={handleGetStart}>
-          Get Start
+          Почати
         </Button>
       </DialogContent>
     </Dialog>

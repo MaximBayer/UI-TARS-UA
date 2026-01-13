@@ -121,7 +121,7 @@ export function RemoteComputerSettings({
     console.log('onSubmit', values);
 
     // updateSetting({ ...settings, ...values });
-    toast.success('Settings saved successfully');
+    toast.success('Налаштування успішно збережено');
   };
 
   useImperativeHandle(ref, () => ({
@@ -149,11 +149,11 @@ export function RemoteComputerSettings({
             name="url"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Sandbox Manager URL</FormLabel>
+                <FormLabel>URL менеджера пісочниці</FormLabel>
                 <FormControl>
                   <Input
                     className="bg-white"
-                    placeholder="Enter Sandbox Manager URL"
+                    placeholder="Введіть URL менеджера пісочниці"
                     {...field}
                   />
                 </FormControl>
@@ -166,11 +166,11 @@ export function RemoteComputerSettings({
             name="token"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>User Token</FormLabel>
+                <FormLabel>Токен користувача</FormLabel>
                 <FormControl>
                   <Input
                     className="bg-white"
-                    placeholder="Enter User Token"
+                    placeholder="Введіть токен користувача"
                     {...field}
                   />
                 </FormControl>
@@ -183,11 +183,11 @@ export function RemoteComputerSettings({
             name="server"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>VNC Proxy Server</FormLabel>
+                <FormLabel>VNC Proxy-сервер</FormLabel>
                 <FormControl>
                   <Input
                     className="bg-white"
-                    placeholder="Enter VNC Proxy Server"
+                    placeholder="Введіть VNC Proxy-сервер"
                     {...field}
                   />
                 </FormControl>
@@ -199,11 +199,11 @@ export function RemoteComputerSettings({
             name="ip"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Establish IP</FormLabel>
+                <FormLabel>IP для встановлення</FormLabel>
                 <FormControl>
                   <Input
                     className="bg-white"
-                    placeholder="Enter Establish IP"
+                    placeholder="Введіть IP для встановлення"
                     {...field}
                   />
                 </FormControl>

@@ -6,7 +6,7 @@
 
 ## Introduction
 
-English | [简体中文](./README.zh-CN.md)
+English | [简体中文](./README.zh-CN.md) | [Українська](./README.uk.md)
 
 [![](https://trendshift.io/api/badge/repositories/13584)](https://trendshift.io/repositories/13584)
 
@@ -41,7 +41,7 @@ English | [简体中文](./README.zh-CN.md)
         <br>
         <br>
         It primarily ships a
-        <a href="https://github.com/bytedance/UI-TARS-desktop/blob/main/docs/quick-start.md#get-model-and-run-local-operator" target="_blank">local</a> and 
+        <a href="https://github.com/bytedance/UI-TARS-desktop/blob/main/docs/quick-start.md#get-model-and-run-local-operator" target="_blank">local</a> and
         <a href="https://github.com/bytedance/UI-TARS-desktop/blob/main/docs/quick-start.md#run-remote-operator" target="_blank">remote</a> computer as well as browser operators.
       </td>
     </tr>
@@ -53,6 +53,8 @@ English | [简体中文](./README.zh-CN.md)
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+- [Introduction](#introduction)
+- [Table of Contents](#table-of-contents)
 - [News](#news)
 - [Agent TARS](#agent-tars)
   - [Showcase](#showcase)
@@ -71,6 +73,7 @@ English | [简体中文](./README.zh-CN.md)
 
 ## News
 
+- **\[2026-01-13\]** 🇺🇦 **Ukrainian Localization** - UI-TARS Desktop now fully supports Ukrainian language! Complete UI translation and VLM output in Ukrainian. See [Ukrainian README](./README.uk.md) for details.
 - **\[2025-11-05\]** 🎉 We're excited to announce the release of [Agent TARS CLI v0.3.0](https://github.com/bytedance/UI-TARS-desktop/releases/tag/v0.3.0)! This version brings streaming support for multiple tools (shell commands, multi-file structured display), runtime settings with timing statistics for tool calls and deep thinking, Event Stream Viewer for data flow tracking and debugging. Additionally, it features exclusive support for [AIO agent Sandbox](https://github.com/agent-infra/sandbox) as isolated all-in-one tools execution environment.
 - **\[2025-06-25\]** We released a Agent TARS Beta and Agent TARS CLI - [Introducing Agent TARS Beta](https://agent-tars.com/blog/2025-06-25-introducing-agent-tars-beta.html), a multimodal AI agent that aims to explore a work form that is closer to human-like task completion through rich multimodal capabilities (such as GUI Agent, Vision) and seamless integration with various real-world tools.
 - **\[2025-06-12\]** - 🎁 We are thrilled to announce the release of UI-TARS Desktop v0.2.0! This update introduces two powerful new features: **Remote Computer Operator** and **Remote Browser Operator**—both completely free. No configuration required: simply click to remotely control any computer or browser, and experience a new level of convenience and intelligence.
@@ -272,6 +275,7 @@ UI-TARS Desktop is a native GUI agent for your local computer, driven by [UI-TAR
 - 💻 Cross-platform support (Windows/MacOS/Browser)
 - 🔄 Real-time feedback and status display
 - 🔐 Private and secure - fully local processing
+- 🇺🇦 Full Ukrainian language support (UI + VLM output)
 
 ### Quick Start
 

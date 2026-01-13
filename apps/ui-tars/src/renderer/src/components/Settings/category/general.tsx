@@ -28,10 +28,10 @@ export const GeneralSettings = () => {
         });
         return;
       } else if (!detail.isPackaged) {
-        toast.info('Unpackaged version does not support update check!');
+        toast.info('Непакована версія не підтримує перевірку оновлень!');
       } else {
-        toast.success('No update available', {
-          description: `current version: ${detail.currentVersion} is the latest version`,
+        toast.success('Немає оновлень', {
+          description: `поточна версія: ${detail.currentVersion} є останньою версією`,
           position: 'top-right',
           richColors: true,
         });
@@ -54,7 +54,7 @@ export const GeneralSettings = () => {
         <RefreshCcw
           className={`h-4 w-4 mr-2 ${updateLoading ? 'animate-spin' : ''}`}
         />
-        {updateLoading ? 'Checking...' : 'Check Updates'}
+        {updateLoading ? 'Перевірка...' : 'Перевірити оновлення'}
       </Button>
       {updateDetail?.version && (
         <div className="text-sm text-gray-500">
@@ -63,7 +63,7 @@ export const GeneralSettings = () => {
       )}
       {updateDetail?.link && (
         <div className="text-sm text-gray-500">
-          Release Notes:{' '}
+          Примітки до випуску:{' '}
           <a
             href={updateDetail.link}
             target="_blank"

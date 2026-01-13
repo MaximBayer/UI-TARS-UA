@@ -45,7 +45,8 @@ import { REPO_OWNER, REPO_NAME } from '@main/shared/constants';
 
 // 定义表单验证 schema
 const formSchema = z.object({
-  language: z.enum(['en', 'zh']),
+  // В інтерфейсі лишається тільки українська мова
+  language: z.enum(['uk']),
   vlmProvider: z.nativeEnum(VLMProviderV2, {
     message: 'Please select a VLM Provider to enhance resolution',
   }),
@@ -60,10 +61,10 @@ const formSchema = z.object({
 });
 
 const SECTIONS = {
-  vlm: 'VLM Settings',
-  chat: 'Chat Settings',
-  report: 'Report Settings',
-  general: 'General',
+  vlm: 'Налаштування VLM',
+  chat: 'Налаштування чату',
+  report: 'Налаштування звітів',
+  general: 'Загальні налаштування',
 } as const;
 
 export default function Settings() {
@@ -94,10 +95,10 @@ export default function Settings() {
         });
         return;
       } else if (!detail.isPackaged) {
-        toast.info('Unpackaged version does not support update check!');
+        toast.info('Непакована версія не підтримує перевірку оновлень!');
       } else {
-        toast.success('No update available', {
-          description: `current version: ${detail.currentVersion} is the latest version`,
+        toast.success('Немає оновлень', {
+          description: `поточна версія: ${detail.currentVersion} є останньою версією`,
           position: 'top-right',
           richColors: true,
         });
@@ -118,7 +119,7 @@ export default function Settings() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      language: 'en',
+      language: 'uk',
       vlmBaseUrl: '',
       vlmApiKey: '',
       vlmModelName: '',
@@ -196,11 +197,11 @@ export default function Settings() {
 
     try {
       await updatePresetFromRemote();
-      toast.success('Preset updated successfully');
+      toast.success('Пресет успішно оновлено');
     } catch (error) {
-      toast.error('Failed to update preset', {
+      toast.error('Не вдалося оновити пресет', {
         description:
-          error instanceof Error ? error.message : 'Unknown error occurred',
+          error instanceof Error ? error.message : 'Виникла невідома помилка',
       });
     }
   };
@@ -210,7 +211,7 @@ export default function Settings() {
     e.stopPropagation();
 
     await window.electron.setting.resetPreset();
-    toast.success('Reset to manual mode successfully', {
+    toast.success('Успішно скинуто до ручного режиму', {
       duration: 1500,
     });
   };
@@ -218,11 +219,11 @@ export default function Settings() {
   const handleClearSettings = async () => {
     try {
       await clearSetting();
-      toast.success('All settings cleared successfully');
+      toast.success('Усі налаштування успішно очищено');
     } catch (error) {
-      toast.error('Failed to clear settings', {
+      toast.error('Не вдалося очистити налаштування', {
         description:
-          error instanceof Error ? error.message : 'Unknown error occurred',
+          error instanceof Error ? error.message : 'Виникла невідома помилка',
       });
     }
   };
@@ -268,7 +269,7 @@ export default function Settings() {
                     variant="outline"
                     onClick={handlePresetModal}
                   >
-                    Import Preset Config
+                    Імпортувати конфігурацію пресета
                   </Button>
                 )}
                 {isRemoteAutoUpdatedPreset && (
@@ -286,18 +287,17 @@ export default function Settings() {
                   render={({ field }) => {
                     return (
                       <FormItem>
-                        <FormLabel>Language</FormLabel>
+                        <FormLabel>Мова</FormLabel>
                         <Select
                           disabled={isRemoteAutoUpdatedPreset}
                           onValueChange={field.onChange}
                           value={field.value}
                         >
                           <SelectTrigger>
-                            <SelectValue placeholder="Select language" />
+                            <SelectValue placeholder="Оберіть мову" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="en">English</SelectItem>
-                            <SelectItem value="zh">中文</SelectItem>
+                            <SelectItem value="uk">Українська</SelectItem>
                           </SelectContent>
                         </Select>
                       </FormItem>
@@ -311,7 +311,7 @@ export default function Settings() {
                   render={({ field }) => {
                     return (
                       <FormItem>
-                        <FormLabel>VLM Provider</FormLabel>
+                        <FormLabel>Постачальник VLM</FormLabel>
                         <Select
                           disabled={isRemoteAutoUpdatedPreset}
                           onValueChange={field.onChange}
@@ -339,11 +339,11 @@ export default function Settings() {
                   name="vlmBaseUrl"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>VLM Base URL</FormLabel>
+                      <FormLabel>Базовий URL VLM</FormLabel>
                       <FormControl>
                         <Input
                           disabled={isRemoteAutoUpdatedPreset}
-                          placeholder="Enter VLM Base URL"
+                          placeholder="Введіть базовий URL VLM"
                           {...field}
                         />
                       </FormControl>
@@ -357,11 +357,11 @@ export default function Settings() {
                   name="vlmApiKey"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>VLM API Key</FormLabel>
+                      <FormLabel>API-ключ VLM</FormLabel>
                       <FormControl>
                         <Input
                           disabled={isRemoteAutoUpdatedPreset}
-                          placeholder="Enter VLM API_Key"
+                          placeholder="Введіть API-ключ VLM"
                           {...field}
                         />
                       </FormControl>
@@ -374,11 +374,11 @@ export default function Settings() {
                   name="vlmModelName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>VLM Model Name</FormLabel>
+                      <FormLabel>Назва моделі VLM</FormLabel>
                       <FormControl>
                         <Input
                           disabled={isRemoteAutoUpdatedPreset}
-                          placeholder="Enter VLM Model Name"
+                          placeholder="Введіть назву моделі VLM"
                           {...field}
                         />
                       </FormControl>
@@ -402,12 +402,12 @@ export default function Settings() {
                     // console.log('field', field);
                     return (
                       <FormItem>
-                        <FormLabel>Max Loop</FormLabel>
+                        <FormLabel>Максимальна кількість кроків</FormLabel>
                         <FormControl>
                           <Input
                             type="number"
                             // disabled={isRemoteAutoUpdatedPreset}
-                            placeholder="Enter a number between 25-200"
+                            placeholder="Введіть число від 25 до 200"
                             {...field}
                             value={field.value === 0 ? '' : field.value}
                             onChange={(e) =>
@@ -425,12 +425,12 @@ export default function Settings() {
                   name="loopIntervalInMs"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Loop Wait Time (ms)</FormLabel>
+                      <FormLabel>Затримка між кроками (мс)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
                           // disabled={isRemoteAutoUpdatedPreset}
-                          placeholder="Enter a number between 0-3000"
+                          placeholder="Введіть число від 0 до 3000"
                           {...field}
                           value={field.value === 0 ? '' : field.value}
                           onChange={(e) =>
@@ -448,7 +448,7 @@ export default function Settings() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>
-                        Search engine for {BROWSER_OPERATOR}:
+                        Пошукова система для {BROWSER_OPERATOR}:
                       </FormLabel>
                       <Select
                         onValueChange={field.onChange}
@@ -511,11 +511,11 @@ export default function Settings() {
                   name="reportStorageBaseUrl"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Report Storage Base URL</FormLabel>
+                      <FormLabel>Базовий URL сховища звітів</FormLabel>
                       <FormControl>
                         <Input
                           disabled={isRemoteAutoUpdatedPreset}
-                          placeholder="https://your-report-storage-endpoint.com/upload"
+                          placeholder="https://ваш-сервер-збереження-звітів.com/upload"
                           {...field}
                         />
                       </FormControl>
@@ -529,11 +529,11 @@ export default function Settings() {
                   name="utioBaseUrl"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>UTIO Base URL</FormLabel>
+                      <FormLabel>Базовий URL UTIO</FormLabel>
                       <FormControl>
                         <Input
                           disabled={isRemoteAutoUpdatedPreset}
-                          placeholder="https://your-utio-endpoint.com/collect"
+                          placeholder="https://ваш-utio-endpoint.com/collect"
                           {...field}
                         />
                       </FormControl>
@@ -561,7 +561,7 @@ export default function Settings() {
                   <RefreshCcw
                     className={`h-4 w-4 mr-2 ${updateLoading ? 'animate-spin' : ''}`}
                   />
-                  {updateLoading ? 'Checking...' : 'Check Updates'}
+                  {updateLoading ? 'Перевірка...' : 'Перевірити оновлення'}
                 </Button>
                 {updateDetail?.version && (
                   <div className="text-sm text-gray-500">
@@ -570,7 +570,7 @@ export default function Settings() {
                 )}
                 {updateDetail?.link && (
                   <div className="text-sm text-gray-500">
-                    Release Notes:{' '}
+                    Примітки до випуску:{' '}
                     <a
                       href={updateDetail.link}
                       target="_blank"
@@ -590,21 +590,21 @@ export default function Settings() {
 
       <div className="border-t p-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="flex justify-between items-center">
-          <Button
-            variant="outline"
-            type="button"
-            className="text-red-400 border-red-400 hover:bg-red-50 hover:text-red-500"
-            onClick={handleClearSettings}
-          >
+            <Button
+              variant="outline"
+              type="button"
+              className="text-red-400 border-red-400 hover:bg-red-50 hover:text-red-500"
+              onClick={handleClearSettings}
+            >
             <Trash className="h-4 w-4" />
-            Clear
+              Очистити
           </Button>
           <div className="flex gap-4">
             <Button variant="outline" type="button" onClick={onCancel}>
-              Cancel
+              Скасувати
             </Button>
             <Button type="submit" onClick={form.handleSubmit(onSubmit)}>
-              Save
+              Зберегти
             </Button>
           </div>
         </div>

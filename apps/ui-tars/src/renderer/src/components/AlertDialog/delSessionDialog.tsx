@@ -28,19 +28,19 @@ export function DeleteSessionDialog({
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete Session</AlertDialogTitle>
+          <AlertDialogTitle>Видалити сеанс</AlertDialogTitle>
           <AlertDialogDescription>
-            The current session is running. Navigating away will forcibly stop
-            the session. Do you still want to proceed?
+            Поточний сеанс виконується. Перехід примусово зупинить сеанс.
+            Все одно продовжити?
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Скасувати</AlertDialogCancel>
           <AlertDialogAction
             className="bg-red-500 hover:bg-red-600"
             onClick={onConfirm}
           >
-            Delete
+            Видалити
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

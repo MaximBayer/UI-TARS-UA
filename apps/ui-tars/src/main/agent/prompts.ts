@@ -4,8 +4,20 @@
  */
 import { NutJSElectronOperator } from './operator';
 
+const getLanguageName = (language: 'zh' | 'en' | 'uk'): string => {
+  switch (language) {
+    case 'zh':
+      return 'Chinese';
+    case 'uk':
+      return 'Ukrainian';
+    case 'en':
+    default:
+      return 'English';
+  }
+};
+
 export const getSystemPrompt = (
-  language: 'zh' | 'en',
+  language: 'zh' | 'en' | 'uk',
 ) => `You are a GUI agent. You are given a task and your action history, with screenshots. You need to perform the next action to complete the task.
 
 ## Output Format
@@ -18,14 +30,14 @@ Action: ...
 ${NutJSElectronOperator.MANUAL.ACTION_SPACES.join('\n')}
 
 ## Note
-- Use ${language === 'zh' ? 'Chinese' : 'English'} in \`Thought\` part.
+- Use ${getLanguageName(language)} in \`Thought\` part.
 - Write a small plan and finally summarize your next action (with its target element) in one sentence in \`Thought\` part.
 
 ## User Instruction
 `;
 
 export const getSystemPromptV1_5 = (
-  language: 'zh' | 'en',
+  language: 'zh' | 'en' | 'uk',
   useCase: 'normal' | 'poki',
 ) => `You are a GUI agent. You are given a task and your action history, with screenshots. You need to perform the next action to complete the task.
 
@@ -50,7 +62,7 @@ call_user() # Submit the task and call the user when the task is unsolvable, or 
 
 
 ## Note
-- Use ${language === 'zh' ? 'Chinese' : 'English'} in \`Thought\` part.
+- Use ${getLanguageName(language)} in \`Thought\` part.
 - ${useCase === 'normal' ? 'Generate a well-defined and practical strategy in the `Thought` section, summarizing your next move and its objective.' : 'Compose a step-by-step approach in the `Thought` part, specifying your next action and its focus.'}
 
 ## User Instruction
@@ -86,7 +98,7 @@ call_user() # Submit the task and call the user when the task is unsolvable, or 
 ## User Instruction
 `;
 
-export const getSystemPromptDoubao_15_15B = (language: 'zh' | 'en') => `
+export const getSystemPromptDoubao_15_15B = (language: 'zh' | 'en' | 'uk') => `
 You are a GUI agent. You are given a task and your action history, with screenshots. You need to perform the next action to complete the task.
 
 ## Output Format
@@ -109,7 +121,7 @@ finished(content='xxx') # Use escape characters \\', \\", and \n in content part
 
 
 ## Note
-- Use ${language === 'zh' ? 'Chinese' : 'English'} in \`Thought\` part.
+- Use ${getLanguageName(language)} in \`Thought\` part.
 - Write a small plan and finally summarize your next action (with its target element) in one sentence in \`Thought\` part.
 
 ## User Instruction
@@ -142,7 +154,7 @@ const ThoughtExamplesEN = `- Example1. Thought: A number 2 appears in the first 
 `;
 
 export const getSystemPromptDoubao_15_20B = (
-  language: 'zh' | 'en',
+  language: 'zh' | 'en' | 'uk',
   operatorType: 'browser' | 'computer',
 ) => `You are a GUI agent. You are given a task and your action history, with screenshots. You need to perform the next action to complete the task.
 
@@ -170,7 +182,7 @@ finished(content='xxx') # Submit the task with an report to the user. Use escape
 
 
 ## Note
-- Use ${language === 'zh' ? 'Chinese' : 'English'} in \`Thought\` part.
+- Use ${getLanguageName(language)} in \`Thought\` part.
 - Write a small plan and finally summarize your next action (with its target element) in one sentence in \`Thought\` part.
 - You may stumble upon new rules or features while playing the game or executing GUI tasks for the first time. Make sure to record them in your \`Thought\` and utilize them later.
 - Your thought style should follow the style of thought Examples.
@@ -179,13 +191,15 @@ finished(content='xxx') # Submit the task with an report to the user. Use escape
 - You should NOT use google when you need to search for information, use baidu.com instead.
 
 ## Thought Examples
-${language === 'zh' ? ThoughtExamplesZH : ThoughtExamplesEN}
+${language === 'zh' ? ThoughtExamplesZH : language === 'uk' ? ThoughtExamplesEN : ThoughtExamplesEN}
 
 ## Output Examples
 Thought: ${
   language === 'zh'
     ? '在这里输出你的中文思考，你的思考样式应该参考上面的Thought Examples...'
-    : 'Write your thoughts here in English, your thinking style should follow the Thought Examples above...'
+    : language === 'uk'
+      ? 'Напишіть свої думки українською мовою тут, ваш стиль мислення повинен відповідати Thought Examples вище...'
+      : 'Write your thoughts here in English, your thinking style should follow the Thought Examples above...'
 }
 Action: click(point='<point>10 20</point>')
 

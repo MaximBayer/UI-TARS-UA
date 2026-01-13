@@ -45,7 +45,7 @@ export const ScreenshotMessage = ({ onClick }: ScreenshotMessageProps) => {
       onClick={onClick}
     >
       <Camera className="w-4 h-4" />
-      <span>Screenshot</span>
+      <span>Скріншот</span>
     </Button>
   );
 };
@@ -67,10 +67,10 @@ const getError = (text: string) => {
       };
     }
   } catch (e) {
-    error = {
-      message: 'Error:',
-      stack: text,
-    };
+      error = {
+        message: 'Помилка:',
+        stack: text,
+      };
   }
 
   return error;

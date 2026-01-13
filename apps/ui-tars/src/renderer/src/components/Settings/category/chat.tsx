@@ -27,7 +27,8 @@ import {
 import { Input } from '@renderer/components/ui/input';
 
 const formSchema = z.object({
-  language: z.enum(['en', 'zh']),
+  // В налаштуваннях чату також використовуємо тільки українську
+  language: z.enum(['uk']),
   maxLoopCount: z.number().min(25).max(200),
   loopIntervalInMs: z.number().min(0).max(3000),
 });
@@ -97,17 +98,16 @@ export function ChatSettings() {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel>Language</FormLabel>
+                  <FormLabel>Мова</FormLabel>
                   <FormDescription>
-                    Control the language used in LLM conversations
+                    Керує мовою, якою LLM відповідає в розмовах
                   </FormDescription>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select language" />
+                      <SelectValue placeholder="Оберіть мову" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="en">English</SelectItem>
-                      <SelectItem value="zh">中文</SelectItem>
+                      <SelectItem value="uk">Українська</SelectItem>
                     </SelectContent>
                   </Select>
                 </FormItem>
@@ -121,10 +121,8 @@ export function ChatSettings() {
               // console.log('field', field);
               return (
                 <FormItem>
-                  <FormLabel>Max Loop</FormLabel>
-                  <FormDescription>
-                    Enter a number between 25-200
-                  </FormDescription>
+                  <FormLabel>Максимальна кількість кроків</FormLabel>
+                  <FormDescription>Введіть число від 25 до 200</FormDescription>
                   <FormControl>
                     <Input
                       type="number"
@@ -143,12 +141,12 @@ export function ChatSettings() {
             name="loopIntervalInMs"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Loop Wait Time (ms)</FormLabel>
-                <FormDescription>Enter a number between 0-3000</FormDescription>
+                <FormLabel>Затримка між кроками (мс)</FormLabel>
+                <FormDescription>Введіть число від 0 до 3000</FormDescription>
                 <FormControl>
                   <Input
                     type="number"
-                    placeholder="Enter a number between 0-3000"
+                    placeholder="Введіть число від 0 до 3000"
                     {...field}
                     value={field.value === 0 ? '' : field.value}
                     onChange={(e) => field.onChange(Number(e.target.value))}
