@@ -6,8 +6,6 @@
 
 ## Вступ
 
-[English](./README.md) | [简体中文](./README.zh-CN.md) | **Українська**
-
 [![](https://trendshift.io/api/badge/repositories/13584)](https://trendshift.io/repositories/13584)
 
 <b>TARS<sup>\*</sup></b> - це стек мультимодального AI Agent, який наразі включає два проекти: [Agent TARS](#agent-tars) та [UI-TARS-desktop](#ui-tars-desktop):
