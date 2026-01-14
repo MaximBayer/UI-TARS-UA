@@ -10,7 +10,6 @@ import {
 } from '@ui-tars/sdk/core';
 import { NutJSOperator } from '@ui-tars/operator-nut-js';
 import { clipboard } from 'electron';
-import { desktopCapturer } from 'electron';
 
 import * as env from '@main/env';
 import { logger } from '@main/logger';
@@ -33,55 +32,12 @@ export class NutJSElectronOperator extends NutJSOperator {
     ],
   };
 
-  public async screenshot(): Promise<ScreenshotOutput> {
-    const {
-      physicalSize,
-      logicalSize,
-      scaleFactor,
-      id: primaryDisplayId,
-    } = getScreenSize(); // Logical = Physical / scaleX
-
-    logger.info(
-      '[screenshot] [primaryDisplay]',
-      'logicalSize:',
-      logicalSize,
-      'scaleFactor:',
-      scaleFactor,
-    );
-
-    const sources = await desktopCapturer.getSources({
-      types: ['screen'],
-      thumbnailSize: {
-        width: Math.round(logicalSize.width),
-        height: Math.round(logicalSize.height),
-      },
-    });
-    const primarySource =
-      sources.find(
-        (source) => source.display_id === primaryDisplayId.toString(),
-      ) || sources[0];
-
-    if (!primarySource) {
-      logger.error('[screenshot] Primary display source not found', {
-        primaryDisplayId,
-        availableSources: sources.map((s) => s.display_id),
-      });
-      // fallback to default screenshot
-      return await super.screenshot();
-    }
-
-    const screenshot = primarySource.thumbnail;
-
-    const resized = screenshot.resize({
-      width: physicalSize.width,
-      height: physicalSize.height,
-    });
-
-    return {
-      base64: resized.toJPEG(75).toString('base64'),
-      scaleFactor,
-    };
-  }
+  // Use base NutJS screenshot implementation instead of Electron's desktopCapturer
+  // because Electron's desktopCapturer on Windows captures only workArea (without taskbar)
+  // while NutJS's screen.grab() captures the full screen including taskbar
+  // public async screenshot(): Promise<ScreenshotOutput> {
+  //   return await super.screenshot();
+  // }
 
   async execute(params: ExecuteParams): Promise<ExecuteOutput> {
     const { action_type, action_inputs } = params.parsedPrediction;

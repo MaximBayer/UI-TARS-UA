@@ -47,6 +47,8 @@ export enum VLMProviderV2 {
   doubao_1_5 = 'VolcEngine Ark for Doubao-1.5-UI-TARS',
   doubao_1_5_vl = 'VolcEngine Ark for Doubao-1.5-thinking-vision-pro',
   perplexity = 'Perplexity AI',
+  google_ai_studio = 'Google AI Studio',
+  anthropic = 'Anthropic',
 }
 
 export enum SearchEngineForSettings {

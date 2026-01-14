@@ -57,11 +57,11 @@ export class NutJSOperator extends Operator {
     const scaleFactor = screenWithScale.pixelDensity.scaleX;
 
     logger.info(
-      '[NutjsOperator]',
-      'scaleX',
-      screenWithScale.pixelDensity.scaleX,
-      'scaleY',
-      screenWithScale.pixelDensity.scaleY,
+      '[NutjsOperator] [DEBUG]',
+      'capturedSize (with scale):',
+      `${screenWithScale.width}x${screenWithScale.height}`,
+      'pixelDensity:',
+      `scaleX=${screenWithScale.pixelDensity.scaleX}, scaleY=${screenWithScale.pixelDensity.scaleY}`,
     );
 
     const screenWithScaleImage = await Jimp.fromBitmap({
@@ -72,6 +72,14 @@ export class NutJSOperator extends Operator {
 
     const width = screenWithScale.width / screenWithScale.pixelDensity.scaleX;
     const height = screenWithScale.height / screenWithScale.pixelDensity.scaleY;
+
+    logger.info(
+      '[NutjsOperator] [DEBUG]',
+      'finalSize (after scale):',
+      `${width}x${height}`,
+      'expectedFullScreen:',
+      '2560x1440',
+    );
 
     const physicalScreenImage = await screenWithScaleImage
       .resize({
